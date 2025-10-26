@@ -142,43 +142,5 @@ mvn verify
 # eagle-bank-inmem/target/site/jacoco/index.html
 ```
 
-> Integration tests validate user registration → auth → account creation → deposit & withdraw → balance consistency.
 
----
-
-## ⚙️ HTTP Status Mapping
-
-| Status | Meaning |
-|--------|----------|
-| `400` | Bad request (missing/invalid fields) |
-| `401` | Unauthorized (missing/invalid JWT) |
-| `403` | Forbidden (accessing another user's data) |
-| `404` | Not found (user/account/transaction not found) |
-| `409` | Conflict (delete user with accounts) |
-| `422` | Unprocessable Entity (insufficient funds) |
-
----
-
-## 🧩 Integration Flow
-End-to-end test (`EagleBankIntegrationTest`) covers:
-1. User registration  
-2. Authentication and JWT validation  
-3. Account creation  
-4. Transactions (deposit/withdrawal)  
-5. Validation error handling  
-
----
-
-## 🧠 Design Highlights
-- Stateless JWT auth filter (`JwtAuthFilter`)
-- Layered architecture (Controller → Service → Repository)
-- Custom exception handlers
-- Validation via `jakarta.validation`
-- Simple balance mutation logic with overdraw prevention
-
----
-
-## ✅ Ready for Submission
-Implements all **minimum and extended** endpoints required by the take-home PDF.  
-Fully testable, self-contained, and documented for quick review.
 
